@@ -1,5 +1,25 @@
 {
   "pages": [
-    "pages/index/index"
-  ]
+    "pages/index/index",
+    "pages/activity/list",
+    "pages/activity/detail",
+    "pages/activity/apply",
+    "pages/activity/applicationlist",
+    "pages/activity/comment",
+    "pages/activity/invite",
+    "pages/user/index"
+  ],
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "活动",
+      "iconPath": "",
+      "selectedIconPath": ""
+    },{
+      "pagePath": "pages/index/index",
+      "text": "我的",
+      "iconPath": "",
+      "selectedIconPath": ""
+    }]
+  }
 }

@@ -5,14 +5,45 @@ Page({
    * 页面的初始数据
    */
   data: {
+    canIUse:wx.canIUse("getUserInfo"),
+    userInfo:"",
+    hasUserInfo:true
+  },
 
+  getUserInfo:function(){
+    this.setData({hasUserInfo:true});
+    wx.showTabBar({
+      
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var thispage = this;
+    wx.getSetting({
+      success:function(res){
+        if(res.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success:function(res){
+              getApp().globalData.userInfo = res.userInfo;
+              thispage.setData({ userInfo: getApp().globalData.userInfo });
+              console.log(res.userInfo);
+              if(getApp().userInfoReadyCallback){
+                getApp().userInfoReadyCallback(res);
+              }
+            }
+          })
+        }
+        else{
+          thispage.setData({hasUserInfo:false})
+          wx.hideTabBar({
+            
+          })
+        }
+      }
+    })
   },
 
   /**
