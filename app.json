@@ -11,7 +11,7 @@
   ],
   "tabBar": {
     "list": [{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/activity/list",
       "text": "活动",
       "iconPath": "",
       "selectedIconPath": ""

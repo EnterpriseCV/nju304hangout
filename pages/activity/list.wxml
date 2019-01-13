@@ -1,2 +1,19 @@
 <!--pages/activity/list.wxml-->
-<text>pages/activity/list.wxml</text>
+<view class='page_row'>  
+  <view class="search">  
+    <view class="df search_arr">  
+      <icon class="searchcion" size='20' type='search'></icon>  
+      <input class="" placeholder="请输入关键字" bindblur='findact' bindconfirm='findact'/>  
+    </view>  
+  </view>  
+</view>  
+<view class='activitylist'>
+<view wx:for="{{activitylist}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actId='{{item.id}}'>
+<view class='activityname'>{{item.name}}</view>
+<view class='activitybasicinfo'>
+<view class='activitybasicinfodetial'>开始时间：{{item.startTime}}</view>
+<view class='activitybasicinfodetial'>结束时间：{{item.endTime}}</view>
+<view class='activitybasicinfodetial'>地点：{{item.place}}</view>
+</view>
+</view>
+</view>

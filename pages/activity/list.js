@@ -5,13 +5,45 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchValue:"",
+    activitylist:""
+  },
 
+  findact:function(event){
+    var that = this;
+    if(this.searchValue==event.detail.value){
+      return;
+    }
+    var value = event.detail.value;
+    var url = 'https://nju304.xyz/activities';
+    if(typeof value=='string' && value.length>0){
+      url=url+"/name/"+value;
+    }
+    wx.request({
+      url: url,
+      success:function(res){
+        that.setData({activitylist:res.data,searchValue:value});
+
+      }
+    })
+    
+  },
+
+  checkActivity:function(event){
+    console.log(event);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.request({
+      url: 'https://nju304.xyz/activities',
+      success:function(res){
+        that.setData({activitylist:res.data});
+      }
+    })
 
   },
 
@@ -54,6 +86,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    
 
   },
 
