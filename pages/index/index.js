@@ -44,7 +44,6 @@ Page({
             jscode:code
           },
           success:function(res){
-            console.log(res);
             getApp().globalData.userInfo.openid = res.data;
           }
         })

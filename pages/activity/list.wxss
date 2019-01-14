@@ -3,11 +3,22 @@
       border-bottom: 1px solid #d0d0d0;
     }
     .search{  
-      margin: 10rpx;
-      padding: 10rpx;
       width: 100%;  
+      padding: 20rpx;
     }  
+    .addicon{
+      float: left;
+      margin: 10rpx 10rpx 10rpx 10rpx;  
+      position: absolute;  
+      z-index: 2;  
+      width: 20px;  
+      height: 20px;  
+      text-align: center; 
+      transform: rotate(44deg);
+    }
     .search_arr {  
+      float:left;
+      width:80%;
       border: 1px solid #d0d0d0;  
       border-radius: 10rpx;  
       margin-left: 20rpx;  
