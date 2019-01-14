@@ -11,6 +11,36 @@ Page({
     curDate:'',
     maxDate:''
   },
+  applyForActivity:function(e){
+    var that = this;
+    wx.request({
+      url: 'https://nju304.xyz/activities/'+that.data.actinfo.id+'/applications',
+      method:'post',
+      data:{
+        actId: that.data.actinfo.id,
+        actName: that.data.actinfo.name,
+        nickName:getApp().globalData.userInfo.nickName,
+        userId: getApp().globalData.userInfo.openid,
+      },
+      success:function(res){
+        if (res.data == 'Created') {
+          wx.showToast({
+            title: '成功',
+            icon: 'succes',
+            duration: 1000,
+            mask: true,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+
+                })
+              }, 1000);
+            }
+          });
+        }
+      }
+    })
+  },
   formSubmit:function(e){
     e.detail.value.ownerId=getApp().globalData.userInfo.openid;
     console.log(e.detail.value.ownerId);
@@ -65,9 +95,13 @@ Page({
     if (strDate >= 0 && strDate <= 9) {
       strDate = "0" + strDate;
     }
-    var currentdate = year + seperator1 + month + seperator1 + strDate;
-    return currentdate+" 00:00";
+    var strHour = date.getHours();
+    var strMinute = date.getMinutes();
+    var currentdate = year + seperator1 + month + seperator1 + strDate +" "+strHour+":"+strMinute;
+    return currentdate;
   },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
