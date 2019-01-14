@@ -1,0 +1,5 @@
+<!--pages/message/applyInfo.wxml-->
+<view><text>pages/message/applyInfo.wxml</text></view>
+<view><text>{{applyId}}</text></view>
+<view><text>{{actId}}</text></view>
+<view><text>{{activity.description}}</text></view>

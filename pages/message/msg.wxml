@@ -1,25 +1,30 @@
-<!--pages/message/msg.wxml-->
-<view class="navbar">
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
-</view>
-
-<!--申请信息-->
-<view hidden="{{currentTab!==0}}">
-  <view class='activitylist'>
-    <view wx:for="{{applications}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actId='{{item.id}}'>
-      <view class='activitybasicinfo'>
-        <view class='activitybasicinfodetial'>活动名：{{item.actName}}</view>
-        <view class='activitybasicinfodetial'>申请描述：{{item.description}}</view>
-        <view class='activitybasicinfodetial'>申请时间：{{item.time}}</view>
-        <view class='activitybasicinfodetial'>状态：{{item.status}}</view>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
-      <button>accept</button>
-      <button>reject</button>
+      <view class="weui-tab__panel">
+
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+
+          <view class="weui-cells weui-cells_after-title" wx:for="{{applications}}" wx:key="id" data-item="item" data-applyId='{{item.id}}'>
+            <navigator url="./applyInfo?applyId={{item.id}}&actId={{item.actId}}&description={{item.description}}&status=={{item.status}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__bd">活动：{{item.actName}}</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">{{item.status}}</view>
+            </navigator>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          2.0版本开启邀请，敬请期待
+        </view>
+
+      </view>
     </view>
   </view>
-</view>
-
-<!--邀请信息-->
-<view hidden="{{currentTab!==1}}">
-  2.0版本开启邀请，敬请期待
 </view>
