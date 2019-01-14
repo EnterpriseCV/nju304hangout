@@ -1,0 +1,65 @@
+/* pages/message/msg.wxss */
+
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navbar {
+  flex: none;
+  display: flex;
+  background: #fff;
+}
+
+.navbar .item {
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.navbar .item.active {
+  color: #fc0;
+}
+
+.navbar .item.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #fc0;
+}
+
+.activityitem {
+  border-bottom: 1px solid #d0d0d0;
+  width: 100%;
+  height: 200rpx;
+}
+
+.activityname {
+  display: flex;
+  width: 30%;
+  height: 100%;
+  float: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.activitybasicinfo {
+  float: left;
+}
+
+.activitybasicinfodetial {
+  font-size: small;
+  font-weight: 100;
+  height: 50rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
