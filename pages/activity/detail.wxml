@@ -45,7 +45,10 @@
 </view>
 <view wx:if='{{notEditable}}'class='description'>
 <label>活动成员:</label>
-<input value='{{actinfo.partNumber}}' disabled='{{notEditable}}'/>
+<view wx:for='{{userlist}}' wx:key='id' class='useritem'>
+<view class='avatar'><image src='{{item.avatarUrl}}' mode='aspectFit'></image></view>
+<view class='nickName'>{{item.nickName}}</view>
+</view>
 </view>
 
 

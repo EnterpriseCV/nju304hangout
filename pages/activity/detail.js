@@ -12,7 +12,8 @@ Page({
     maxDate:''
   },
   formSubmit:function(e){
-    e.detail.value.ownerID=getApp().globalData.userInfo.openid;
+    e.detail.value.ownerId=getApp().globalData.userInfo.openid;
+    console.log(e.detail.value.ownerId);
     wx.request({
       url: 'https://nju304.xyz/activities/',
       method:'post',
@@ -81,6 +82,12 @@ Page({
         url: 'https://nju304.xyz/activities/'+options.actId,
         success:function(res){
           that.setData({actinfo:res.data});
+        }
+      });
+      wx.request({
+        url: 'https://nju304.xyz/activities/' + options.actId+"/users",
+        success: function (res) {
+          that.setData({ userlist: res.data });
         }
       });
     }
