@@ -6,16 +6,85 @@ Page({
    */
   data: {
     actinfo:"",
-    userlist:""
+    userlist:"",
+    notEditable:true,
+    curDate:'',
+    maxDate:''
+  },
+  formSubmit:function(e){
+    e.detail.value.ownerID=getApp().globalData.userInfo.openid;
+    wx.request({
+      url: 'https://nju304.xyz/activities/',
+      method:'post',
+      data:e.detail.value,
+      success:function(res){
+        if(res.data=='Created'){
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 1000,
+          mask: true,
+          success:function(){
+            setTimeout(function(){
+              wx.navigateBack({
+
+              })
+            },1000);
+          }
+        });
+        }
+      }
+    })
+  },
+  bindStartTimeChange:function(event){
+    this.setData({'actinfo.startTime':event.detail.value+" 00:00"});
+  },
+  bindEndTimeChange: function (event) {
+    this.setData({ 'actinfo.endTime': event.detail.value + " 00:00" });
   },
 
+  getNowFormatDate:function() {
+    var date = new Date();
+    return this.formatDate(date);
+  },
+
+  getMaxFormatDate: function () {
+    var date = new Date();
+    date.setDate(date.getDate()+30);
+    return this.formatDate(date);
+  },
+  formatDate:function(date){
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+      month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+      strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate+" 00:00";
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.opentype=='check'){
-      
+    var that = this;
+    that.setData({curDate:that.getNowFormatDate(),maxDate:that.getMaxFormatDate()});
+    console.log(options);
+    if(options.opentype=='create'){
+      that.setData({ notEditable: false, actinfo:{startTime: that.getNowFormatDate(),endTime: that.getNowFormatDate()}});
+    }else{
+      wx.request({
+        url: 'https://nju304.xyz/activities/'+options.actId,
+        success:function(res){
+          that.setData({actinfo:res.data});
+        }
+      });
     }
+
   },
 
   /**

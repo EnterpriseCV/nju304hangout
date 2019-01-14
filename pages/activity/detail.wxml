@@ -1,2 +1,56 @@
 <!--pages/activity/detail.wxml-->
-<text>pages/activity/detail.wxml</text>
+<form bindsubmit="formSubmit">
+<view class='title'><input name='name' value='{{actinfo.name}}' placeholder='活动名称'/></view>
+<view class='description'>
+<label>活动描述:</label>
+<textarea class='{{notEditable?"":"myinput"}}' name='description' value='{{actinfo.description}}' disabled='{{notEditable}}' auto-height='true'/>
+</view>
+<view class="section">
+  <label>开始时间:</label>
+  <picker
+    mode="date"
+    value="{{actinfo.startTime}}"
+    start="{{curDate}}"
+    end="{{maxDate}}"
+    bindchange="bindStartTimeChange"
+    class='{{notEditable?"":"myinput"}}'
+    disabled='{{notEditable}}'
+    name='startTime'
+  >
+    <view class="picker ">{{actinfo.startTime}}</view>
+  </picker>
+</view>
+<view class="section">
+  <label>结束时间:</label>
+  <picker
+    mode="date"
+    value="{{actinfo.endTime}}"
+    start="{{curDate}}"
+    end="{{maxDate}}"
+    bindchange="bindEndTimeChange"
+    class='{{notEditable?"":"myinput"}}'
+    disabled='{{notEditable}}'
+    name='endTime'
+  >
+    <view class="picker">{{actinfo.endTime}}</view>
+  </picker>
+</view>
+<view class='description'>
+<label>活动地点:</label>
+<input class='{{notEditable?"":"myinput"}}' name='place' value='{{actinfo.place}}' disabled='{{notEditable}}'/>
+</view>
+<view class='description'>
+<label>活动人数:</label>
+<input class='{{notEditable?"":"myinput"}}' name='number' value='{{actinfo.number}}' disabled='{{notEditable}}' />
+</view>
+<view wx:if='{{notEditable}}'class='description'>
+<label>活动成员:</label>
+<input value='{{actinfo.partNumber}}' disabled='{{notEditable}}'/>
+</view>
+
+
+<view class='buttonArea'>
+<button wx:if='{{!notEditable}}' form-type='submit'>申请创建</button>
+</view>
+
+</form>

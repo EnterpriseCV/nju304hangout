@@ -5,6 +5,7 @@
       <icon class="searchcion" size='20' type='search'></icon>  
       <input class="" placeholder="请输入关键字" bindblur='findact' bindconfirm='findact'/>  
     </view>  
+    <icon class="addicon" size='20' type='clear' bindtap='createActivity'></icon>
   </view>  
 </view>  
 <view class='activitylist'>
