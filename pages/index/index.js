@@ -31,10 +31,9 @@ Page({
     wx.login({
       success:function(res){
         var code = res.code;
-        console.log(code);
         getApp().globalData.userInfo.openId = "";
         wx.request({
-          url: 'https://localhost:443/user/login',
+          url: 'https://nju304.xyz/user/login',
           method:"post",
           data:{
             nickName:userInfo.nickName,
@@ -46,6 +45,7 @@ Page({
           },
           success:function(res){
             console.log(res);
+            getApp().globalData.userInfo.openid = res.data;
           }
         })
       }
