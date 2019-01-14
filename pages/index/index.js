@@ -15,6 +15,17 @@ Page({
     wx.showTabBar({
       
     })
+    this.gotoactlist();
+  },
+
+  gotoactlist:function(){
+    wx.switchTab({
+      url: '/pages/activity/list'
+    })
+  },
+
+  registerOrUpdateUserInfo:function(){
+
   },
 
   /**
@@ -26,13 +37,17 @@ Page({
       success:function(res){
         if(res.authSetting['scope.userInfo']){
           wx.getUserInfo({
+            withCredentials:true,
             success:function(res){
               getApp().globalData.userInfo = res.userInfo;
               thispage.setData({ userInfo: getApp().globalData.userInfo });
-              console.log(res.userInfo);
+              console.log(res);
               if(getApp().userInfoReadyCallback){
                 getApp().userInfoReadyCallback(res);
               }
+              wx.switchTab({
+                url: '/pages/activity/list'
+              })
             }
           })
         }

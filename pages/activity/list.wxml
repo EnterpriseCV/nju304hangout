@@ -8,7 +8,7 @@
   </view>  
 </view>  
 <view class='activitylist'>
-<view wx:for="{{activitylist}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actId='{{item.id}}'>
+<view wx:for="{{activitylist}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actid='{{item.id}}'>
 <view class='activityname'>{{item.name}}</view>
 <view class='activitybasicinfo'>
 <view class='activitybasicinfodetial'>开始时间：{{item.startTime}}</view>

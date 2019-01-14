@@ -30,7 +30,10 @@ Page({
   },
 
   checkActivity:function(event){
-    console.log(event);
+    var actid = event.currentTarget.dataset.actid;
+    wx.navigateTo({
+      url: '/pages/activity/detail?actId='+actid+'&opentype=check'
+    });
   },
 
   /**
