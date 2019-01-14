@@ -8,15 +8,7 @@ Page({
     applyId: "",
     status: "",
     actId: "",
-    nickName: "",
     activity: {}
-  },
-
-  showUserInfo: function() {
-    console.log(this.data.activity.ownerId);
-    wx.navigateTo({
-      url: '/pages/user/index?userId' + this.data.activity.ownerId,
-    });
   },
 
   deleteApply: function() {
@@ -40,8 +32,7 @@ Page({
     this.setData({
       applyId: options.applyId,
       status: options.status,
-      actId: options.actId,
-      nickName: options.nickName
+      actId: options.actId
     });
     console.log(this.data.actId)
     wx.request({
