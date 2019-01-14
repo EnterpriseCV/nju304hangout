@@ -1,5 +1,43 @@
 <!--pages/message/applyInfo.wxml-->
-<view><text>pages/message/applyInfo.wxml</text></view>
-<view><text>{{applyId}}</text></view>
-<view><text>{{actId}}</text></view>
-<view><text>{{activity.description}}</text></view>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">活动详情</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">活动名称</view>
+        <view class="weui-cell__ft">{{activity.name}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">活动描述</view>
+        <view class="weui-cell__ft">{{activity.description}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">地点</view>
+        <view class="weui-cell__ft">{{activity.place}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">开始时间</view>
+        <view class="weui-cell__ft">{{activity.startTime}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">结束时间</view>
+        <view class="weui-cell__ft">{{activity.endTime}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">活动组织者</view>
+        <view class="weui-cell__ft">{{nickName}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">申请理由</view>
+        <view class="weui-cell__ft">{{description}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">申请状态</view>
+        <view class="weui-cell__ft">{{status}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="warn" bindtap="deleteApply">删除申请</button>
+  </view>
+</view>

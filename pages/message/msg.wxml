@@ -14,8 +14,8 @@
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
 
           <view class="weui-cells weui-cells_after-title" wx:for="{{applications}}" wx:key="id" data-item="item" data-applyId='{{item.id}}'>
-            <navigator url="./applyInfo?applyId={{item.id}}&actId={{item.actId}}&description={{item.description}}&status=={{item.status}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-              <view class="weui-cell__bd">活动：{{item.actName}}</view>
+            <navigator url="./applyInfo?applyId={{item.id}}&actId={{item.actId}}&description={{item.description}}&status={{item.status}}&nickName={{item.nickName}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__bd">{{item.actName}}</view>
               <view class="weui-cell__ft weui-cell__ft_in-access">{{item.status}}</view>
             </navigator>
           </view>

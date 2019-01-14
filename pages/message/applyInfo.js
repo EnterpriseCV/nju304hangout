@@ -9,24 +9,39 @@ Page({
     status: "",
     actId: "",
     description: "",
+    nickName: "",
     activity: {}
+  },
+
+  deleteApply: function() {
+    wx.request({
+      method: 'DELETE',
+      url: 'https://nju304.xyz/activities/applications/' + this.data.applyId,
+      success: function(res) {
+        console.log(res.statusCode);
+      },
+      fail: function (res){
+
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     this.setData({
       applyId: options.applyId,
       status: options.status,
       actId: options.actId,
+      nickName: options.nickName,
       description: options.description,
     });
     console.log(this.data.actId)
     wx.request({
       url: 'https://nju304.xyz/activities/' + this.data.actId,
-      success: function (res) {
+      success: function(res) {
         that.setData({
           activity: res.data
         });
