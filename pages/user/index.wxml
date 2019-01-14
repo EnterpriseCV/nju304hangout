@@ -1,2 +1,40 @@
 <!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">用户信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">昵称</view>
+        <view class="weui-cell__ft">{{user.nickName}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">性别</view>
+        <view class="weui-cell__ft" wx:if="{{user.gender==0}}">女</view>
+        <view class="weui-cell__ft" wx:else>男</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">省份</view>
+        <view class="weui-cell__ft">{{user.province}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">城市</view>
+        <view class="weui-cell__ft">{{user.city}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">被赞</view>
+        <view class="weui-cell__ft">{{user.likeNum}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">被踩</view>
+        <view class="weui-cell__ft">{{user.treadNum}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">标签</view>
+        <view class="weui-cell__ft">{{user.labels}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="warn" bindtap="deleteApply">删除申请</button>
+  </view>
+</view>

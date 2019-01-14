@@ -8,9 +8,15 @@ Page({
     applyId: "",
     status: "",
     actId: "",
-    description: "",
     nickName: "",
     activity: {}
+  },
+
+  showUserInfo: function() {
+    console.log(this.data.activity.ownerId);
+    wx.navigateTo({
+      url: '/pages/user/index?userId' + this.data.activity.ownerId,
+    });
   },
 
   deleteApply: function() {
@@ -35,8 +41,7 @@ Page({
       applyId: options.applyId,
       status: options.status,
       actId: options.actId,
-      nickName: options.nickName,
-      description: options.description,
+      nickName: options.nickName
     });
     console.log(this.data.actId)
     wx.request({
@@ -46,6 +51,9 @@ Page({
           activity: res.data
         });
       },
+      fail: function (res) {
+
+      }
     })
   },
 

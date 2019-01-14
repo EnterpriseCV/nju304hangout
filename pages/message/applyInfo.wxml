@@ -23,13 +23,9 @@
         <view class="weui-cell__bd">结束时间</view>
         <view class="weui-cell__ft">{{activity.endTime}}</view>
       </view>
-      <view class="weui-cell">
+      <view class="weui-cell" bindtap='showUserInfo'>
         <view class="weui-cell__bd">活动组织者</view>
         <view class="weui-cell__ft">{{nickName}}</view>
-      </view>
-      <view class="weui-cell">
-        <view class="weui-cell__bd">申请理由</view>
-        <view class="weui-cell__ft">{{description}}</view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">申请状态</view>

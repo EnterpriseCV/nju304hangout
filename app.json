@@ -7,19 +7,30 @@
     "pages/activity/applicationlist",
     "pages/activity/comment",
     "pages/activity/invite",
-    "pages/user/index"
+    "pages/message/msg",
+    "pages/user/index",
+    "pages/message/applyInfo"
   ],
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/activity/list",
-      "text": "活动",
-      "iconPath": "",
-      "selectedIconPath": ""
-    },{
-      "pagePath": "pages/user/index",
-      "text": "我的",
-      "iconPath": "",
-      "selectedIconPath": ""
-    }]
+    "list": [
+      {
+        "pagePath": "pages/activity/list",
+        "text": "活动",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },
+      {
+        "pagePath": "pages/message/msg",
+        "text": "消息",
+        "iconPath": "",
+        "selectedIconPath": ""
+      }
+    ]
   }
 }
