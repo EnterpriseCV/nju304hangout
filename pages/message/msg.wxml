@@ -1,0 +1,25 @@
+<!--pages/message/msg.wxml-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+
+<!--申请信息-->
+<view hidden="{{currentTab!==0}}">
+  <view class='activitylist'>
+    <view wx:for="{{applications}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actId='{{item.id}}'>
+      <view class='activitybasicinfo'>
+        <view class='activitybasicinfodetial'>活动名：{{item.actName}}</view>
+        <view class='activitybasicinfodetial'>申请描述：{{item.description}}</view>
+        <view class='activitybasicinfodetial'>申请时间：{{item.time}}</view>
+        <view class='activitybasicinfodetial'>状态：{{item.status}}</view>
+      </view>
+      <button>accept</button>
+      <button>reject</button>
+    </view>
+  </view>
+</view>
+
+<!--邀请信息-->
+<view hidden="{{currentTab!==1}}">
+  2.0版本开启邀请，敬请期待
+</view>
