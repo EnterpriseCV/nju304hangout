@@ -14,7 +14,8 @@ Page({
     this.setData({hasUserInfo:true});
     wx.showTabBar({
       
-    })
+    });
+    this.registerOrUpdateUserInfo();
     this.gotoactlist();
   },
 
@@ -25,6 +26,30 @@ Page({
   },
 
   registerOrUpdateUserInfo:function(){
+    var userInfo = getApp().globalData.userInfo;
+
+    wx.login({
+      success:function(res){
+        var code = res.code;
+        console.log(code);
+        getApp().globalData.userInfo.openId = "";
+        wx.request({
+          url: 'https://localhost:443/user/login',
+          method:"post",
+          data:{
+            nickName:userInfo.nickName,
+            gender: userInfo.gender,
+            avatarUrl: userInfo.avatarUrl,
+            city: userInfo.city,
+            province: userInfo.province,
+            jscode:code
+          },
+          success:function(res){
+            console.log(res);
+          }
+        })
+      }
+    });
 
   },
 
@@ -37,17 +62,13 @@ Page({
       success:function(res){
         if(res.authSetting['scope.userInfo']){
           wx.getUserInfo({
-            withCredentials:true,
             success:function(res){
               getApp().globalData.userInfo = res.userInfo;
               thispage.setData({ userInfo: getApp().globalData.userInfo });
-              console.log(res);
               if(getApp().userInfoReadyCallback){
                 getApp().userInfoReadyCallback(res);
               }
-              wx.switchTab({
-                url: '/pages/activity/list'
-              })
+              thispage.getUserInfo();
             }
           })
         }
