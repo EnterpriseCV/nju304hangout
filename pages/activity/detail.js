@@ -11,6 +11,11 @@ Page({
     curDate:'',
     maxDate:''
   },
+  checkuser(event){
+    wx.navigateTo({
+      url: '/pages/user/index?userId=' + event.currentTarget.dataset.userid,
+    })
+  },
   applyForActivity:function(e){
     var that = this;
     wx.request({

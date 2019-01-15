@@ -45,7 +45,7 @@
 </view>
 <view wx:if='{{notEditable}}'class='description'>
 <label>活动成员:</label>
-<view wx:for='{{userlist}}' wx:key='id' class='useritem'>
+<view wx:for='{{userlist}}' wx:key='id' class='useritem' data-userid='{{item.id}}' bindtap='checkuser'>
 <view class='avatar'><image src='{{item.avatarUrl}}' mode='aspectFit'></image></view>
 <view class='nickName'>{{item.nickName}}</view>
 </view>
