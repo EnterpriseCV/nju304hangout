@@ -16,6 +16,27 @@ Page({
     applications: {}
   },
 
+  loadData: function() {
+    var openid = "1832247";
+    wx.request({
+      url: 'https://nju304.xyz/activities/applications/user/' + openid,
+      success: function(res) {
+        if (res.statusCode != 404) {
+          that.setData({
+            applications: res.data
+          });
+        }
+      },
+      fail: function(res) {
+
+      },
+      // url: 'https://nju304.xyz/activities/invitations/user/' + openid,
+      // success: function (res) {
+      //   that.setData({ invitations: res.data });
+      // }
+    })
+  },
+
   tabClick: function(e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
@@ -29,26 +50,14 @@ Page({
   onLoad: function(options) {
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
           sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
         });
       }
     });
-    var openid = "1832247";
-    wx.request({
-      url: 'https://nju304.xyz/activities/applications/user/' + openid,
-      success: function(res) {
-        that.setData({
-          applications: res.data
-        });
-      },
-      // url: 'https://nju304.xyz/activities/invitations/user/' + openid,
-      // success: function (res) {
-      //   that.setData({ invitations: res.data });
-      // }
-    })
+    this.loadData();
   },
 
   /**
@@ -83,15 +92,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.loadData();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
-
-  },
+  onReachBottom: function() {},
 
   /**
    * 用户点击右上角分享

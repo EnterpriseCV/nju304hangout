@@ -42,4 +42,10 @@
       </view>
     </view>
   </view>
+  <view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="primary" bindtap="likeUser" disabled="{{hasAttitude}}">为他点赞</button>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="warn" bindtap="threadUser" disabled="{{hasAttitude}}">踩他一脚</button>
+  </view>
 </view>
