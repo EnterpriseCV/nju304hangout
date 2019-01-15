@@ -30,7 +30,7 @@
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <image src="/img/like.jpg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">
+          <image class="flipy" src="/img/like.jpg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">
           </image>
         </view>
         <!-- <view class="weui-cell__bd">被踩</view> -->
