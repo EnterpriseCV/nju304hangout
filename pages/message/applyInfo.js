@@ -17,7 +17,7 @@ Page({
       url: 'https://nju304.xyz/activities/applications/' + this.data.applyId,
       success: function(res) {
         console.log(res.statusCode);
-        wx.redirectTo({
+        wx.reLaunch({
           url: './msg'
         })
       },
