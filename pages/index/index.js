@@ -31,7 +31,6 @@ Page({
     wx.login({
       success:function(res){
         var code = res.code;
-        getApp().globalData.userInfo.openId = "";
         wx.request({
           url: 'https://nju304.xyz/user/login',
           method:"post",
