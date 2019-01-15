@@ -9,7 +9,8 @@
     "pages/activity/invite",
     "pages/message/msg",
     "pages/user/index",
-    "pages/message/applyInfo"
+    "pages/message/applyInfo",
+    "pages/personal/join"
   ],
   "tabBar": {
     "list": [
@@ -20,7 +21,7 @@
         "selectedIconPath": ""
       },
       {
-        "pagePath": "pages/user/index",
+        "pagePath": "pages/personal/join",
         "text": "我的",
         "iconPath": "",
         "selectedIconPath": ""
