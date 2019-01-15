@@ -8,6 +8,10 @@
     <icon class="addicon" size='20' type='clear' bindtap='createActivity'></icon>
   </view>  
 </view>  
+<view class="contidion-view">
+  <label>我参与的</label><switch bindchange="attendStateChanged" />
+  <label>我创建的</label><switch bindchange="createStateChanged" />
+</view>
 <view class='activitylist'>
 <view wx:for="{{activitylist}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actid='{{item.id}}'>
 <view class='activityname'>{{item.name}}</view>

@@ -10,6 +10,32 @@ Page({
     needUpdate:false
   },
 
+  attendStateChanged(e){
+    console.log(e);
+    if(e.detail.value){
+      this.setData({
+        'searchCondition.userId':getApp().globalData.userInfo.openid
+      });
+    }else{
+      this.setData({
+        'searchCondition.userId':''
+      });
+    }
+    this.getActivityList();
+  },
+  createStateChanged(e) {
+    if (e.detail.value) {
+      this.setData({
+        'searchCondition.ownerId': getApp().globalData.userInfo.openid
+      });
+    } else {
+      this.setData({
+        'searchCondition.ownerId':''
+      });
+    }
+    this.getActivityList();
+  },
+
   getActivityList:function(){
     var that = this;
     wx.request({
@@ -23,7 +49,7 @@ Page({
   },
 
   searchConditionChanged:function(event){
-    var that = this;W
+    var that = this;
     var value = event.detail.value;
     that.setData({
       'searchCondition.name':value
