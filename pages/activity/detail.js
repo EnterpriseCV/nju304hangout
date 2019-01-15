@@ -14,6 +14,31 @@ Page({
     curDate:'',
     maxDate:''
   },
+  deleteact:function(){
+    var that = this;
+    wx.request({
+      url: 'https://nju304.xyz/activities/'+that.data.actinfo.id,
+      method:'delete',
+      header:{ "Cookie": "JSESSIONID=" + getApp().globalData.session_id },
+      success:function(res){
+        if (res.data == 'OK') {
+          wx.showToast({
+            title: '成功',
+            icon: 'succes',
+            duration: 1000,
+            mask: true,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+
+                })
+              }, 1000);
+            }
+          });
+        }
+      }
+    })
+  },
   exitActivity:function(event){
     var that = this;
     wx.request({
