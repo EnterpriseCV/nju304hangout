@@ -5,22 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    actinfo:"",
-    userlist:"",
-    notEditable:true,
-    inthisact:false,
-    isOwner:false,
-    opentype:"",
-    curDate:'',
-    maxDate:''
+    actinfo: "",
+    userlist: "",
+    notEditable: true,
+    inthisact: false,
+    isOwner: false,
+    opentype: "",
+    curDate: '',
+    maxDate: ''
   },
-  deleteact:function(){
+  deleteact: function () {
     var that = this;
     wx.request({
-      url: 'https://nju304.xyz/activities/'+that.data.actinfo.id,
-      method:'delete',
-      header:{ "Cookie": "JSESSIONID=" + getApp().globalData.session_id },
-      success:function(res){
+      url: 'https://nju304.xyz/activities/' + that.data.actinfo.id,
+      method: 'delete',
+      header: { "Cookie": "JSESSIONID=" + getApp().globalData.session_id },
+      success: function (res) {
         if (res.data == 'OK') {
           wx.showToast({
             title: '成功',
@@ -39,13 +39,13 @@ Page({
       }
     })
   },
-  exitActivity:function(event){
+  exitActivity: function (event) {
     var that = this;
     wx.request({
-      url: 'https://nju304.xyz/activities/'+that.data.actinfo.id+'/user ',
-      header:{"Cookie":"JSESSIONID="+getApp().globalData.session_id},
-      method:'delete',
-      success:function(res){
+      url: 'https://nju304.xyz/activities/' + that.data.actinfo.id + '/user ',
+      header: { "Cookie": "JSESSIONID=" + getApp().globalData.session_id },
+      method: 'delete',
+      success: function (res) {
         if (res.data == 'OK') {
           wx.showToast({
             title: '成功',
@@ -64,23 +64,23 @@ Page({
       }
     })
   },
-  checkuser:function(event){
+  checkuser: function (event) {
     wx.navigateTo({
       url: '/pages/user/index?userId=' + event.currentTarget.dataset.userid,
     })
   },
-  applyForActivity:function(e){
+  applyForActivity: function (e) {
     var that = this;
     wx.request({
-      url: 'https://nju304.xyz/activities/'+that.data.actinfo.id+'/applications',
-      method:'post',
-      data:{
+      url: 'https://nju304.xyz/activities/' + that.data.actinfo.id + '/applications',
+      method: 'post',
+      data: {
         actId: that.data.actinfo.id,
         actName: that.data.actinfo.name,
-        nickName:getApp().globalData.userInfo.nickName,
+        nickName: getApp().globalData.userInfo.nickName,
         userId: getApp().globalData.userInfo.openid,
       },
-      success:function(res){
+      success: function (res) {
         if (res.data == 'Created') {
           wx.showToast({
             title: '成功',
@@ -99,50 +99,51 @@ Page({
       }
     })
   },
-  formSubmit:function(e){
-    e.detail.value.ownerId=getApp().globalData.userInfo.openid;
+  formSubmit: function (e) {
+    e.detail.value.ownerId = getApp().globalData.userInfo.openid;
     e.detail.value.id = this.data.actinfo.id;
     wx.request({
       url: 'https://nju304.xyz/activities/',
-      method:'post',
-      data:e.detail.value,
-      success:function(res){
-        if(res.data=='Created'){
-        wx.showToast({
-          title: '成功',
-          icon: 'succes',
-          duration: 1000,
-          mask: true,
-          success:function(){
-            setTimeout(function(){
-              wx.navigateBack({
+      method: 'post',
+      header: { "Cookie": "JSESSIONID=" + getApp().globalData.session_id },
+      data: e.detail.value,
+      success: function (res) {
+        if (res.data == 'Created') {
+          wx.showToast({
+            title: '成功',
+            icon: 'succes',
+            duration: 1000,
+            mask: true,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
 
-              })
-            },1000);
-          }
-        });
+                })
+              }, 1000);
+            }
+          });
         }
       }
     })
   },
-  bindStartTimeChange:function(event){
-    this.setData({'actinfo.startTime':event.detail.value+" 00:00"});
+  bindStartTimeChange: function (event) {
+    this.setData({ 'actinfo.startTime': event.detail.value + " 00:00" });
   },
   bindEndTimeChange: function (event) {
     this.setData({ 'actinfo.endTime': event.detail.value + " 00:00" });
   },
 
-  getNowFormatDate:function() {
+  getNowFormatDate: function () {
     var date = new Date();
     return this.formatDate(date);
   },
 
   getMaxFormatDate: function () {
     var date = new Date();
-    date.setDate(date.getDate()+30);
+    date.setDate(date.getDate() + 30);
     return this.formatDate(date);
   },
-  formatDate:function(date){
+  formatDate: function (date) {
     var seperator1 = "-";
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -155,7 +156,7 @@ Page({
     }
     var strHour = date.getHours();
     var strMinute = date.getMinutes();
-    var currentdate = year + seperator1 + month + seperator1 + strDate +" "+strHour+":"+strMinute;
+    var currentdate = year + seperator1 + month + seperator1 + strDate + " " + strHour + ":" + strMinute;
     return currentdate;
   },
 
@@ -165,27 +166,27 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({curDate:that.getNowFormatDate(),maxDate:that.getMaxFormatDate(),opentype:options.opentype});
-    if(options.opentype=='create'){
-      that.setData({ notEditable: false, actinfo:{startTime: that.getNowFormatDate(),endTime: that.getNowFormatDate()}});
-    }else{
+    that.setData({ curDate: that.getNowFormatDate(), maxDate: that.getMaxFormatDate(), opentype: options.opentype });
+    if (options.opentype == 'create') {
+      that.setData({ notEditable: false, actinfo: { startTime: that.getNowFormatDate(), endTime: that.getNowFormatDate() } });
+    } else {
       wx.request({
-        url: 'https://nju304.xyz/activities/'+options.actId,
-        success:function(res){
-          that.setData({actinfo:res.data});
-          if(getApp().globalData.userInfo.openid==res.data.ownerId){
-            that.setData({notEditable:false,isOwner:true});
+        url: 'https://nju304.xyz/activities/' + options.actId,
+        success: function (res) {
+          that.setData({ actinfo: res.data });
+          if (getApp().globalData.userInfo.openid == res.data.ownerId) {
+            that.setData({ notEditable: false, isOwner: true });
           }
         }
       });
       wx.request({
-        url: 'https://nju304.xyz/activities/' + options.actId+"/users",
+        url: 'https://nju304.xyz/activities/' + options.actId + "/users",
         success: function (res) {
           that.setData({ userlist: res.data });
-          for(var user of res.data){
-            if(user.id==getApp().globalData.userInfo.openid){
+          for (var user of res.data) {
+            if (user.id == getApp().globalData.userInfo.openid) {
               console.log(user);
-              that.setData({inthisact:true});
+              that.setData({ inthisact: true });
               break;
             }
           }
