@@ -5,28 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchValue:"",
+    searchCondition:"",
     activitylist:""
   },
 
-  findact:function(event){
+  getActivityList:function(){
     var that = this;
-    if(this.searchValue==event.detail.value){
-      return;
-    }
-    var value = event.detail.value;
-    var url = 'https://nju304.xyz/activities';
-    if(typeof value=='string' && value.length>0){
-      url=url+"/name/"+value;
-    }
     wx.request({
-      url: url,
-      success:function(res){
-        that.setData({activitylist:res.data,searchValue:value});
-
+      url: 'https://nju304.xyz/activities',
+      data: that.data.searchCondition,
+      success: function (res) {
+        that.setData({ activitylist: res.data });
+        wx.stopPullDownRefresh();
       }
     })
-    
+  },
+
+  searchConditionChanged:function(event){
+    var that = this;
+    var value = event.detail.value;
+    that.setData({
+      'searchCondition.name':value
+    });
+    that.getActivityList();
   },
 
   checkActivity:function(event){
@@ -47,12 +48,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
-      url: 'https://nju304.xyz/activities',
-      success:function(res){
-        that.setData({activitylist:res.data});
-      }
-    })
+    that.getActivityList();
 
   },
 
@@ -88,7 +84,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getActivityList();
   },
 
   /**

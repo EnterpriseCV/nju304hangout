@@ -1,6 +1,6 @@
 <!--pages/activity/detail.wxml-->
 <form bindsubmit="formSubmit">
-<view class='title'><input name='name' value='{{actinfo.name}}' placeholder='活动名称'/></view>
+<view class='title'><input name='name' value='{{actinfo.name}}' disabled='{{notEditable}}' placeholder='活动名称'/></view>
 <view class='description'>
 <label>活动描述:</label>
 <textarea class='{{notEditable?"":"myinput"}}' name='description' value='{{actinfo.description}}' disabled='{{notEditable}}' auto-height='true'/>
