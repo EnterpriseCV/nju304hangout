@@ -23,7 +23,7 @@ Page({
   },
 
   searchConditionChanged:function(event){
-    var that = this;
+    var that = this;W
     var value = event.detail.value;
     that.setData({
       'searchCondition.name':value

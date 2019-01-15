@@ -33,5 +33,6 @@ label{
 }
 .nickName{
   float: right;
+  padding:20rpx;
 
 }

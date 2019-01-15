@@ -57,7 +57,7 @@
 <button wx:if='{{opentype!="create"&&!notEditable}}' form-type='submit'>更新信息</button>
 <button wx:if='{{opentype!="create"&&!notEditable}}' bindtap='deleteact' type='warn'>删除活动</button>
 <button wx:if='{{notEditable&&!inthisact}}' bindtap='applyForActivity'>申请加入</button>
-<button wx:if='{{inthisact}}' bindtap='exitActivity'>退出活动</button>
+<button wx:if='{{inthisact&&!isOwner}}' bindtap='exitActivity'>退出活动</button>
 </view>
 
 </form>
