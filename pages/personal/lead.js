@@ -1,32 +1,34 @@
-// pages/personal/join.js
+// pages/personal/lead.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activitylist:"",
-    userid:""
+    activitylist:""
 
   },
-  checkActivity:function(event){
-    var actid = event.currentTarget.dataset.actid;
+  loadJoin: function () {
     wx.navigateTo({
-      url: '/pages/activity/detail?actId=' + actid + '&opentype=check'
+      url: '/pages/personal/join'
     });
-
   },
+  loadLead: function () {
+    wx.navigateTo({
+      url: '/pages/personal/lead'
+    });
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(getApp().globalData);
-    var that=this;
-    var userid =getApp().globalData.userInfo.openid;
+    var that = this;
+    var userid = getApp().globalData.userInfo.openid;
     console.log(userid)
     wx.request({
-      url: 'https://nju304.xyz/activities/user/' + userid,
+      url: 'https://nju304.xyz/activities/owner/' + userid,
       success: function (res) {
         that.setData({
           activitylist: res.data

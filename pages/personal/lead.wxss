@@ -1,3 +1,4 @@
+/* pages/personal/lead.wxss */
 /* pages/personal/join.wxss */
 .personalTitle{
  
@@ -32,10 +33,11 @@
 .activitybasicinfo{
       display: flex;
       height:100%;
-      float: right;
+      float: 70rpx;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      font-weight: 580;
+      
+      font-weight: 400;
       
     }
+    

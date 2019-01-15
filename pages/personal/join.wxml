@@ -12,7 +12,9 @@
 
  
 </view>
-<view wx:for="{{activitylist}}" wx:key="id" data-actid='{{item.id}}'>
-<view >{{item.name}}</view>
+
+<view wx:for="{{activitylist}}" wx:key="id" data-actid='{{item.id}}' class='activityitem' bindtap="checkActivity" >
+<view class='activityname' >{{item.name}}</view>
+<view class='activitybasicinfo'>{{item.status}}</view>
 
 </view>

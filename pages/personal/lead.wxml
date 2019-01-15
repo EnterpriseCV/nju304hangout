@@ -1,0 +1,21 @@
+<!--pages/personal/lead.wxml-->
+<view class='personalTitle'>
+ 
+
+ 
+
+ 
+<button bindtap='loadJoin'>我参与的活动</button>
+ 
+<button bindtap='loadLead'>我发起的活动</button>
+
+
+ 
+</view>
+
+<view wx:for="{{activitylist}}" wx:key="id" data-actid='{{item.id}}' class='activityitem'      >
+<view class='activityname' >{{item.name}}</view>
+<view class='activitybasicinfo'>{{item.status}}</view>
+
+</view>
+
