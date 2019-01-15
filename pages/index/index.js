@@ -11,11 +11,16 @@ Page({
   },
 
   getUserInfo:function(){
+    var that = this;
     this.setData({hasUserInfo:true});
     wx.showTabBar({
       
     });
-    this.registerOrUpdateUserInfo();
+    that.registerOrUpdateUserInfo();
+    setInterval(function () {
+      that.registerOrUpdateUserInfo();
+      console.log(getApp().globalData.session_id);
+    }, 1000*60*20);
     this.gotoactlist();
   },
 
@@ -32,7 +37,7 @@ Page({
       success:function(res){
         var code = res.code;
         wx.request({
-          url: 'https://localhost:443/user/login',
+          url: 'https://nju304.xyz/user/login',
           method:"post",
           data:{
             nickName:userInfo.nickName,
@@ -43,8 +48,9 @@ Page({
             jscode:code
           },
           success:function(res){
-            console.log(res.data.session_id);
-            //getApp().globalData.userInfo.openid = res.data;
+            console.log(res);
+            getApp().globalData.userInfo.openid = res.data.openid;
+            getApp().globalData.session_id = res.data.session_id;
           }
         })
       }

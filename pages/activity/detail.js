@@ -13,8 +13,29 @@ Page({
     maxDate:''
   },
   exitActivity:function(event){
-    //console.log(getApp().globalData.userInfo.openid+" "+this.data.actinfo.id);
-    
+    var that = this;
+    wx.request({
+      url: 'https://nju304.xyz/activities/'+that.data.actinfo.id+'/user ',
+      header:{"Cookie":"JSESSIONID="+getApp().globalData.session_id},
+      method:'delete',
+      success:function(res){
+        if (res.data == 'OK') {
+          wx.showToast({
+            title: '成功',
+            icon: 'succes',
+            duration: 1000,
+            mask: true,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateBack({
+
+                })
+              }, 1000);
+            }
+          });
+        }
+      }
+    })
   },
   checkuser:function(event){
     wx.navigateTo({
