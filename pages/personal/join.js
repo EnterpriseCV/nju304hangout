@@ -9,6 +9,13 @@ Page({
     userid:""
 
   },
+  checkActivity:function(event){
+    var actid = event.currentTarget.dataset.actid;
+    wx.navigateTo({
+      url: '/pages/activity/detail?actId=' + actid + '&opentype=check'
+    });
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
