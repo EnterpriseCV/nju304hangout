@@ -18,6 +18,15 @@ Page({
       url: '/pages/personal/lead'
     });
   },
+  checkAct:function(e){
+    var actid = e.currentTarget.dataset.actid;
+    console.log(actid);
+    wx.navigateTo({
+      url: '/pages/activity/applicationlist?actId=' + actid ,
+    })
+    
+
+  },
 
 
   /**
@@ -25,7 +34,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var userid = getApp().globalData.userInfo.openid;
+    var userid = getApp().globalData.userInfo.openid.openid;
     console.log(userid)
     wx.request({
       url: 'https://nju304.xyz/activities/owner/' + userid,

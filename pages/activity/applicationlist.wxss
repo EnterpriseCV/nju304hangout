@@ -1,1 +1,7 @@
 /* pages/activity/applicationlist.wxss */
+.title{
+  width: 100%;
+  font-weight: 900;
+  font-size:20px;
+  text-align: center;
+}

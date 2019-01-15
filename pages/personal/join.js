@@ -33,7 +33,7 @@ Page({
   onLoad: function (options) {
     console.log(getApp().globalData);
     var that=this;
-    var userid =getApp().globalData.userInfo.openid;
+    var userid =getApp().globalData.userInfo.openid.openid;
     console.log(userid)
     wx.request({
       url: 'https://nju304.xyz/activities/user/' + userid,

@@ -1,2 +1,2 @@
 <!--pages/activity/applicationlist.wxml-->
-<text>pages/activity/applicationlist.wxml</text>
+<view class='title'><input name='name' value='{{activity.name}}' /></view>

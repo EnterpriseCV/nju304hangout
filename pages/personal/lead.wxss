@@ -33,11 +33,22 @@
 .activitybasicinfo{
       display: flex;
       height:100%;
-      float: 70rpx;
-      flex-direction: column;
+      float: 300rpx;
+      padding-left: 20rpx;
+      flex-direction: row;
       justify-content: center;
-      
-      font-weight: 400;
+      align-items: center;
+      font-weight: 300;
       
     }
+.buttonStyle{
+      width: 120rpx;
+      height: 90rpx;
+      font-size:20rpx ; 
+      font-weight: 500;
+      align-items: center;
+      justify-content: center;
+      
+       
+}
     

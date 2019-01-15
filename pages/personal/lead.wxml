@@ -1,21 +1,17 @@
 <!--pages/personal/lead.wxml-->
 <view class='personalTitle'>
- 
+  <button bindtap='loadJoin'>我参与的活动</button>
 
- 
-
- 
-<button bindtap='loadJoin'>我参与的活动</button>
- 
-<button bindtap='loadLead'>我发起的活动</button>
-
-
- 
+  <button bindtap='loadLead'>我发起的活动</button>
 </view>
 
-<view wx:for="{{activitylist}}" wx:key="id" data-actid='{{item.id}}' class='activityitem'      >
-<view class='activityname' >{{item.name}}</view>
-<view class='activitybasicinfo'>{{item.status}}</view>
-
+<view wx:for="{{activitylist}}" wx:key="id" data-actid='{{item.id}}' class='activityitem'>
+  <view class='activityname'>{{item.name}}</view>
+  <view class='activitybasicinfo'>
+    <view class='activitybasicinfo'>{{item.status}}</view>
+    <!-- <button class='buttonStyle' bindtap='checkAct'>查看详情</button>
+    <button class='buttonStyle' bin></button> -->
+    <view class='activitybasicinfo'> <button class='buttonStyle' data-actid='{{item.id}}' bindtap="checkAct">查看详情</button> </view>
+    <view class='activitybasicinfo'> <button class='buttonStyle'>删除</button> </view>
+  </view>
 </view>
-
