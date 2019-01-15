@@ -1,0 +1,18 @@
+<!--pages/personal/join.wxml-->
+<view class='personalTitle'>
+ 
+
+ 
+
+ 
+<button><navigator url="./join" >我参与的活动</navigator></button>
+ 
+<button><navigator url="./lead" >我发起的活动</navigator></button>
+
+
+ 
+</view>
+<view wx:for="{{activitylist}}" wx:key="id" data-actid='{{item.id}}'>
+<view >{{item.name}}</view>
+
+</view>

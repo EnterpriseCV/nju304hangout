@@ -1,0 +1,12 @@
+/* pages/personal/join.wxss */
+.personalTitle{
+ 
+  
+ 
+  display: flex;
+ 
+  
+ 
+  flex-direction:row;
+ 
+}

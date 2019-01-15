@@ -21,11 +21,19 @@
         <view class="weui-cell__ft">{{user.city}}</view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__bd">被赞</view>
+        <view class="weui-cell__bd">
+          <image src="/img/like.jpg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">
+          </image>
+        </view>
+        <!-- <view class="weui-cell__bd">被赞</view> -->
         <view class="weui-cell__ft">{{user.likeNum}}</view>
       </view>
       <view class="weui-cell">
-        <view class="weui-cell__bd">被踩</view>
+        <view class="weui-cell__bd">
+          <image src="/img/like.jpg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">
+          </image>
+        </view>
+        <!-- <view class="weui-cell__bd">被踩</view> -->
         <view class="weui-cell__ft">{{user.treadNum}}</view>
       </view>
       <view class="weui-cell">
