@@ -16,6 +16,16 @@ Page({
     });
 
   },
+  loadJoin: function () {
+    wx.navigateTo({
+      url: '/pages/personal/join'
+    });
+  },
+  loadLead: function () {
+    wx.navigateTo({
+      url: '/pages/personal/lead'
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
