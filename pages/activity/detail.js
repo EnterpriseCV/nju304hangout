@@ -8,10 +8,15 @@ Page({
     actinfo:"",
     userlist:"",
     notEditable:true,
+    inthisact:false,
     curDate:'',
     maxDate:''
   },
-  checkuser(event){
+  exitActivity:function(event){
+    //console.log(getApp().globalData.userInfo.openid+" "+this.data.actinfo.id);
+    
+  },
+  checkuser:function(event){
     wx.navigateTo({
       url: '/pages/user/index?userId=' + event.currentTarget.dataset.userid,
     })
@@ -48,7 +53,6 @@ Page({
   },
   formSubmit:function(e){
     e.detail.value.ownerId=getApp().globalData.userInfo.openid;
-    console.log(e.detail.value.ownerId);
     wx.request({
       url: 'https://nju304.xyz/activities/',
       method:'post',
@@ -113,7 +117,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({curDate:that.getNowFormatDate(),maxDate:that.getMaxFormatDate()});
-    console.log(options);
     if(options.opentype=='create'){
       that.setData({ notEditable: false, actinfo:{startTime: that.getNowFormatDate(),endTime: that.getNowFormatDate()}});
     }else{
@@ -126,7 +129,15 @@ Page({
       wx.request({
         url: 'https://nju304.xyz/activities/' + options.actId+"/users",
         success: function (res) {
+
           that.setData({ userlist: res.data });
+          for(var user of res.data){
+            if(user.id==getApp().globalData.userInfo.openid){
+              console.log(user);
+              that.setData({inthisact:true});
+              break;
+            }
+          }
         }
       });
     }

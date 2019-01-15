@@ -32,7 +32,7 @@ Page({
       success:function(res){
         var code = res.code;
         wx.request({
-          url: 'https://nju304.xyz/user/login',
+          url: 'https://localhost:443/user/login',
           method:"post",
           data:{
             nickName:userInfo.nickName,
@@ -43,7 +43,8 @@ Page({
             jscode:code
           },
           success:function(res){
-            getApp().globalData.userInfo.openid = res.data;
+            console.log(res.data.session_id);
+            //getApp().globalData.userInfo.openid = res.data;
           }
         })
       }

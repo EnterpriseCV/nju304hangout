@@ -54,7 +54,8 @@
 
 <view class='buttonArea'>
 <button wx:if='{{!notEditable}}' form-type='submit'>申请创建</button>
-<button wx:if='{{notEditable}}' bindtap='applyForActivity'>申请加入</button>
+<button wx:if='{{notEditable&&!inthisact}}' bindtap='applyForActivity'>申请加入</button>
+<button wx:if='{{inthisact}}' bindtap='exitActivity'>退出活动</button>
 </view>
 
 </form>
