@@ -9,6 +9,8 @@ Page({
     userlist:"",
     notEditable:true,
     inthisact:false,
+    isOwner:false,
+    opentype:"",
     curDate:'',
     maxDate:''
   },
@@ -74,6 +76,7 @@ Page({
   },
   formSubmit:function(e){
     e.detail.value.ownerId=getApp().globalData.userInfo.openid;
+    e.detail.value.id = this.data.actinfo.id;
     wx.request({
       url: 'https://nju304.xyz/activities/',
       method:'post',
@@ -137,7 +140,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({curDate:that.getNowFormatDate(),maxDate:that.getMaxFormatDate()});
+    that.setData({curDate:that.getNowFormatDate(),maxDate:that.getMaxFormatDate(),opentype:options.opentype});
     if(options.opentype=='create'){
       that.setData({ notEditable: false, actinfo:{startTime: that.getNowFormatDate(),endTime: that.getNowFormatDate()}});
     }else{
@@ -145,12 +148,14 @@ Page({
         url: 'https://nju304.xyz/activities/'+options.actId,
         success:function(res){
           that.setData({actinfo:res.data});
+          if(getApp().globalData.userInfo.openid==res.data.ownerId){
+            that.setData({notEditable:false,isOwner:true});
+          }
         }
       });
       wx.request({
         url: 'https://nju304.xyz/activities/' + options.actId+"/users",
         success: function (res) {
-
           that.setData({ userlist: res.data });
           for(var user of res.data){
             if(user.id==getApp().globalData.userInfo.openid){
@@ -161,6 +166,7 @@ Page({
           }
         }
       });
+
     }
 
   },

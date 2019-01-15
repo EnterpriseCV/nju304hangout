@@ -6,7 +6,8 @@ Page({
    */
   data: {
     searchCondition:"",
-    activitylist:""
+    activitylist:"",
+    needUpdate:false
   },
 
   getActivityList:function(){
@@ -63,14 +64,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.needUpdate){
+      this.getActivityList();
+      this.data.needUpdate=false;
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.data.needUpdate=true;
   },
 
   /**
