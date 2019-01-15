@@ -17,7 +17,8 @@ Page({
   },
 
   loadData: function() {
-    var openid = "1832247";
+    var that = this;
+    var openid = getApp().globalData.userInfo.openid;
     wx.request({
       url: 'https://nju304.xyz/activities/applications/user/' + openid,
       success: function(res) {
@@ -93,6 +94,7 @@ Page({
    */
   onPullDownRefresh: function() {
     this.loadData();
+    wx.stopPullDownRefresh()
   },
 
   /**
