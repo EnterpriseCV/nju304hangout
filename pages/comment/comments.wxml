@@ -1,0 +1,17 @@
+<!--pages/comment/comments.wxml-->
+<view class="page">
+
+  <view wx:for="{{comments}}" wx:key="id" data-item="item" data-applyId='{{item.id}}'>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <image src='{{item.avatarUrl}}' style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>{{item.nickName}}
+        </view>
+        <view class='weui-cell__ft'>评分：{{item.score}}</view>
+      </view>
+      <view class="weui-cell">
+        <textarea value="{{item.description}}" disabled="true" auto-height></textarea>
+      </view>
+    </view>
+  </view>
+</view>

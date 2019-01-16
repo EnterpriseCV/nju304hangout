@@ -1,0 +1,22 @@
+<!--pages/comment/add.wxml-->
+<view class="page">
+  <form bindsubmit="addComment">
+    <view class="section section_gap">
+      <text class="section__title">评分：</text>
+      <view class="body-view">
+        <slider bindchange="sliderchange" min="0" max="10" show-value name="slider"/>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入评语" style="height: 3.3em" name="textarea" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit">确定</button>
+    </view>
+  </form>
+</view>

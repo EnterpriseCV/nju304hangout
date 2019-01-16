@@ -1,51 +1,35 @@
-// pages/personal/join.js
+// pages/comment/comments.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activitylist:"",
-    userid:""
-
-  },
-  checkActivity:function(event){
-    var actid = event.currentTarget.dataset.actid;
-    wx.navigateTo({
-      url: '/pages/activity/detail?actId=' + actid + '&opentype=check'
-    });
-
-  },
-  loadJoin: function () {
-    wx.navigateTo({
-      url: '/pages/personal/join'
-    });
-  },
-  loadLead: function () {
-    wx.navigateTo({
-      url: '/pages/personal/lead'
-    });
+    actId: "",
+    comments: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(getApp().globalData);
-    var that=this;
-    var userid =getApp().globalData.userInfo.openid.openid;
-    console.log(userid)
+    var that = this;
+    this.setData({
+      actId: options.actId
+    });
     wx.request({
-      url: 'https://nju304.xyz/activities/user/' + userid,
+      url: 'https://nju304.xyz/comment/org/' + options.actId,
       success: function (res) {
-        that.setData({
-          activitylist: res.data
-        });
+        if (res.statusCode != 404) {
+          that.setData({
+            comments: res.data
+          });
+        }
       },
       fail: function (res) {
-      }
-    })
 
+      },
+    })
 
   },
 

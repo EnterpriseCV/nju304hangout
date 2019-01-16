@@ -10,7 +10,8 @@
     "pages/message/msg",
     "pages/user/index",
     "pages/message/applyInfo",
-    "pages/personal/join",
-    "pages/personal/index"
+    "pages/personal/index",
+    "pages/comment/comments",
+    "pages/comment/add"
   ]
 }

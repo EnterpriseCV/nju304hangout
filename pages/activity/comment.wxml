@@ -1,2 +1,21 @@
 <!--pages/activity/comment.wxml-->
-<text>pages/activity/comment.wxml</text>
+<!--pages/message/applyInfo.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">
+      <button class="weui-btn" type="primary" bindtap="showAdd">添加评论</button>
+    </view>
+    <view wx:for="{{applications}}" wx:key="id" data-item="item" data-applyId='{{item.id}}'>
+      <view class="weui-cells weui-cells_after-title">
+        <navigator url="../user/index?userId={{item.userId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd"><image src='{{item.avatarUrl}}' mode='aspectFit'></image></view>
+          <view class="weui-cell__ft weui-cell__ft_in-access">{{item.nickName}}</view>
+        </navigator>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">{{item.score}}</view>
+          <view class="weui-cell__ft">{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

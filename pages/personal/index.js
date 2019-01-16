@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user: {}
   },
 
   checkAttend:function(){
@@ -25,7 +25,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    template.tabbar("tabBar", 1, this)
+    var that = this;
+    template.tabbar("tabBar", 1, this);
+    wx.request({
+      url: 'https://nju304.xyz/user/' + getApp().globalData.userInfo.openid,
+      success: function (res) {
+        that.setData({
+          user: res.data
+        });
+      },
+      fail: function (res) {
+
+      }
+    })
 
   },
 

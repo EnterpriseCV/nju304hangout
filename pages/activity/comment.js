@@ -5,7 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    comments: "",
+    score: -1,
+    showForm: false
+  },
 
+  showAdd: function(){
+    this.setData({
+      showForm: !showForm
+    })
   },
 
   /**
@@ -13,6 +21,20 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    var actId = options.actId;
+    wx.request({
+      url: 'https://nju304.xyz/comment/org/' + actId,
+      success: function (res) {
+        if (res.statusCode != 404) {
+          that.setData({
+            comments: res.data
+          });
+        }
+      },
+      fail: function (res) {
+
+      }
+    })
   },
 
   /**
