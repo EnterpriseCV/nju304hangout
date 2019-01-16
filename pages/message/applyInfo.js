@@ -8,13 +8,30 @@ Page({
     applyId: "",
     status: "",
     actId: "",
+    userId: "",
     activity: {}
   },
 
-  deleteApply: function() {
+  acceptApply: function () {
     wx.request({
-      method: 'DELETE',
-      url: 'https://nju304.xyz/activities/applications/' + this.data.applyId,
+      method: 'POST',
+      url: 'https://nju304.xyz/activities/applications/' + this.data.applyId + '/1',
+      success: function (res) {
+        console.log(res.statusCode);
+        wx.reLaunch({
+          url: './msg'
+        })
+      },
+      fail: function (res) {
+
+      }
+    })
+  },
+
+  rejectApply: function() {
+    wx.request({
+      method: 'POST',
+      url: 'https://nju304.xyz/activities/applications/' + this.data.applyId + '/-1',
       success: function(res) {
         console.log(res.statusCode);
         wx.reLaunch({
@@ -35,7 +52,8 @@ Page({
     this.setData({
       applyId: options.applyId,
       status: options.status,
-      actId: options.actId
+      actId: options.actId,
+      userId: options.userId
     });
     console.log(this.data.actId)
     wx.request({
