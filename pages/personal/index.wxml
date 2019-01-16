@@ -1,0 +1,10 @@
+<import src="../../template/template.wxml"/>
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}"/>
+<view>
+<open-data type="userAvatarUrl"></open-data>
+<open-data type="userNickName"></open-data>
+</view>
+<view>
+<button bindtap="checkAttend">我参加的活动</button>
+<button bindtap="checkCreate">我创建的活动</button>
+</view>

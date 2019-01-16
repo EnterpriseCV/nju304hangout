@@ -10,28 +10,7 @@
     "pages/message/msg",
     "pages/user/index",
     "pages/message/applyInfo",
-    "pages/personal/join"
-  ],
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/activity/list",
-        "text": "活动",
-        "iconPath": "",
-        "selectedIconPath": ""
-      },
-      {
-        "pagePath": "pages/personal/join",
-        "text": "我的",
-        "iconPath": "",
-        "selectedIconPath": ""
-      },
-      {
-        "pagePath": "pages/message/msg",
-        "text": "消息",
-        "iconPath": "",
-        "selectedIconPath": ""
-      }
-    ]
-  }
+    "pages/personal/join",
+    "pages/personal/index"
+  ]
 }
