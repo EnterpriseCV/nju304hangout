@@ -13,9 +13,6 @@ Page({
   getUserInfo:function(){
     var that = this;
     this.setData({hasUserInfo:true});
-    wx.showTabBar({
-      
-    });
     that.registerOrUpdateUserInfo();
     setInterval(function () {
       that.registerOrUpdateUserInfo();
@@ -25,7 +22,7 @@ Page({
   },
 
   gotoactlist:function(){
-    wx.switchTab({
+    wx.redirectTo({
       url: '/pages/activity/list'
     })
   },

@@ -1,1 +1,2 @@
-@import "weui.wxss"
+@import "weui.wxss";
+@import "/template/template.wxss";
