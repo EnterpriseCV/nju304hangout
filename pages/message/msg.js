@@ -1,5 +1,5 @@
 // pages/message/msg.js
-
+var template = require('../../template/template.js');
 var sliderWidth = 96;
 
 Page({
@@ -50,6 +50,7 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    template.tabbar("tabBar", 2, this)
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
