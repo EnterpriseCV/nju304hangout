@@ -108,7 +108,7 @@ Page({
       header: { "Cookie": "JSESSIONID=" + getApp().globalData.session_id },
       data: e.detail.value,
       success: function (res) {
-        if (res.data == 'Created') {
+        if (res.data == 'Created'||res.data=='OK') {
           wx.showToast({
             title: '成功',
             icon: 'succes',
