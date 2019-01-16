@@ -14,6 +14,14 @@ Page({
     curDate: '',
     maxDate: ''
   },
+
+  checkActivityComment:function(){
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/activity/comment?actId='+that.data.actinfo.id
+    })
+  },
+
   deleteact: function () {
     var that = this;
     wx.request({
