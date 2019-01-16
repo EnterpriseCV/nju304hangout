@@ -8,7 +8,8 @@ Page({
   data: {
     searchCondition: "",
     activitylist: "",
-    needUpdate: false
+    needUpdate: false,
+    fullPage:true
   },
 
   getActivityList: function() {
@@ -58,7 +59,8 @@ Page({
     });
     that.getActivityList();
     if (!options.userId&&!options.ownerId) {
-      template.tabbar("tabBar", 0, this)
+      template.tabbar("tabBar", 0, this);
+      that.setData({fullPage:false});
     }
 
   },
