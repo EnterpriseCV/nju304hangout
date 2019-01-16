@@ -17,6 +17,9 @@ Page({
     wx.request({
       url: 'https://nju304.xyz/activities',
       data: that.data.searchCondition,
+      header: {
+        "Cookie": "JSESSIONID=" + getApp().globalData.session_id
+      },
       success: function(res) {
         that.setData({
           activitylist: res.data
