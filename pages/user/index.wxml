@@ -5,20 +5,20 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">昵称</view>
-        <view class="weui-cell__ft">{{user.nickName}}</view>
+        <view class="weui-cell__ft"><open-data type="userNickName" lang="zh_CN"></open-data></view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">性别</view>
         <view class="weui-cell__ft" wx:if="{{user.gender==0}}">女</view>
-        <view class="weui-cell__ft" wx:else>男</view>
+        <view class="weui-cell__ft" wx:else><open-data type="userGender" lang="zh_CN"></open-data></view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">省份</view>
-        <view class="weui-cell__ft">{{user.province}}</view>
+        <view class="weui-cell__ft"><open-data type="userProvince" lang="zh_CN"></open-data></view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">城市</view>
-        <view class="weui-cell__ft">{{user.city}}</view>
+        <view class="weui-cell__ft"><open-data type="userCity" lang="zh_CN"></open-data></view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">

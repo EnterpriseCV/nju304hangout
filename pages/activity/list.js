@@ -65,7 +65,6 @@ Page({
       template.tabbar("tabBar", 0, this);
       that.setData({fullPage:false});
     }
-
   },
 
   /**
