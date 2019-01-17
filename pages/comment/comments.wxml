@@ -1,15 +1,34 @@
 <!--pages/comment/comments.wxml-->
 <view class="page">
 
+  <button class="weui-btn" type="default" plain="true" bindtap="isShowAdd" style="font-size: 15px;font-weight: bolder">{{isShow}}</button>
+  <form bindsubmit="addComment" hidden="{{showAdd}}">
+    <view class="section section_gap">
+      <text class="section__title">评分：</text>
+      <view class="body-view">
+        <slider bindchange="sliderchange" min="0" max="10" show-value name="slider" activeColor="{{sliderColor}}" blockColor="{{sliderColor}}" />
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入评语" name="textarea" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit">提交评论</button>
+    </view>
+  </form>
   <view wx:for="{{comments}}" wx:key="id" data-item="item" data-applyId='{{item.id}}'>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
           <image src="{{item.avatarUrl}}" style="width: 50px; height: 50px; display: block" />
-          <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;background-color:green" hidden='{{item.score<60}}'>
+          <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;background-color:green" hidden='{{item.score<=6}}'>
             {{item.score}}
           </view>
-          <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;background-color:red" hidden='{{item.score>60}}'>
+          <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;background-color:red" hidden='{{item.score>6}}'>
             {{item.score}}
           </view>
         </view>

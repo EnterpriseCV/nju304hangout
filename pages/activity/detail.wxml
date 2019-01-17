@@ -44,7 +44,6 @@
     <button wx:if='{{opentype!="create"&&isOwner}}' bindtap='deleteact' type='warn'>删除活动</button>
     <button wx:if='{{notEditable&&!inthisact}}' bindtap='applyForActivity'>申请加入</button>
     <button wx:if='{{opentype!="create"&&!notEditable}}' bindtap='checkActivityComment'>活动评论</button>
-    <button wx:if='{{opentype!="create"&&!notEditable}}' bindtap='addActivityComment'>评论</button>
     <button wx:if='{{inthisact&&!isOwner}}' bindtap='exitActivity'>退出活动</button>
   </view>
 
