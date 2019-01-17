@@ -39,4 +39,7 @@
   <view class="page__bd page__bd_spacing" hidden="{{status != '申请中'}}">
     <button class="weui-btn" type="warn" bindtap="rejectApply">拒绝申请</button>
   </view>
+  <view class="page__bd page__bd_spacing" hidden="{{status == '申请中'}}">
+    <button class="weui-btn" type="warn" bindtap="deleteApply">删除申请</button>
+  </view>
 </view>

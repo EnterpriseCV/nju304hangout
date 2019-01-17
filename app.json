@@ -5,7 +5,6 @@
     "pages/activity/detail",
     "pages/activity/apply",
     "pages/activity/applicationlist",
-    "pages/activity/comment",
     "pages/activity/invite",
     "pages/message/msg",
     "pages/user/index",

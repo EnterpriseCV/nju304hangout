@@ -12,14 +12,49 @@ Page({
     activity: {}
   },
 
+  deleteApply: function () {
+    wx.request({
+      method: 'DELETE',
+      url: 'https://nju304.xyz/activities/applications/' + this.data.applyId,
+      success: function (res) {
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 1000,
+          mask: true,
+          success: function () {
+            setTimeout(function () {
+              wx.reLaunch({
+                url: './msg'
+              })
+            }, 1000);
+          }
+        });
+      },
+      fail: function (res) {
+
+      }
+    })
+  },
+
   acceptApply: function () {
     wx.request({
       method: 'POST',
       url: 'https://nju304.xyz/activities/applications/' + this.data.applyId + '/1',
       success: function (res) {
-        wx.reLaunch({
-          url: './msg'
-        })
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 1000,
+          mask: true,
+          success: function () {
+            setTimeout(function () {
+              wx.reLaunch({
+                url: './msg'
+              })
+            }, 1000);
+          }
+        });
       },
       fail: function (res) {
 
@@ -31,11 +66,20 @@ Page({
     wx.request({
       method: 'POST',
       url: 'https://nju304.xyz/activities/applications/' + this.data.applyId + '/-1',
-      success: function(res) {
-        console.log(res.statusCode);
-        wx.reLaunch({
-          url: './msg'
-        })
+      success: function (res) {
+        wx.showToast({
+          title: '成功',
+          icon: 'succes',
+          duration: 1000,
+          mask: true,
+          success: function () {
+            setTimeout(function () {
+              wx.reLaunch({
+                url: './msg'
+              })
+            }, 1000);
+          }
+        });
       },
       fail: function (res){
 
