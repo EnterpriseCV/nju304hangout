@@ -15,7 +15,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <image src='{{user.avatarUrl}}' style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>{{item.nickName}}
+          <image src='{{user.avatarUrl}}' style="margin-right: 5px;vertical-align: middle;width:40px; height: 40px;"></image>{{item.nickName}}
         </view>
         <view class='weui-cell__ft'>{{user.nickName}}</view>
       </view>
