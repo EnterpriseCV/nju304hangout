@@ -4,28 +4,29 @@
     <view class="weui-cells__title">用户信息</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
-        <view class="weui-cell__bd">昵称</view>
-        <view class="weui-cell__ft"><open-data type="userNickName" lang="zh_CN"></open-data></view>
+        <view class="weui-cell__bd">
+          <image src='{{user.avatarUrl}}' style="margin-right: 5px;vertical-align: middle;width:40px; height: 40px;"></image>{{item.nickName}}
+        </view>
+        <view class='weui-cell__ft'>{{user.nickName}}</view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">性别</view>
-        <view class="weui-cell__ft" wx:if="{{user.gender==0}}">女</view>
-        <view class="weui-cell__ft" wx:else><open-data type="userGender" lang="zh_CN"></open-data></view>
+        <view class="weui-cell__ft" hidden='{{user.gender==0}}'>男</view>
+        <view class="weui-cell__ft" hidden='{{user.gender==1}}'>女</view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">省份</view>
-        <view class="weui-cell__ft"><open-data type="userProvince" lang="zh_CN"></open-data></view>
+        <view class="weui-cell__ft">{{user.province}}</view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">城市</view>
-        <view class="weui-cell__ft"><open-data type="userCity" lang="zh_CN"></open-data></view>
+        <view class="weui-cell__ft">{{user.city}}</view>
       </view>
       <view class="weui-cell">
         <view class="weui-cell__bd">
           <image src="/img/like.jpg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">
           </image>
         </view>
-        <!-- <view class="weui-cell__bd">被赞</view> -->
         <view class="weui-cell__ft">{{user.likeNum}}</view>
       </view>
       <view class="weui-cell">
@@ -33,7 +34,6 @@
           <image class="flipy" src="/img/like.jpg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;">
           </image>
         </view>
-        <!-- <view class="weui-cell__bd">被踩</view> -->
         <view class="weui-cell__ft">{{user.treadNum}}</view>
       </view>
       <view class="weui-cell">
