@@ -51,6 +51,19 @@ Page({
     });
   },
 
+  setSortType:function(e){
+    this.setData({
+      'searchCondition.sortType': e.currentTarget.dataset['type']
+    })
+    this.getActivityList()
+  },
+
+  setCondition:function(){
+    wx.navigateTo({
+      url: '/pages/activity/condition'
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -59,6 +72,10 @@ Page({
     that.setData({
       searchCondition: options
     });
+    this.setData({
+      'searchCondition.sortType':'default',
+      'searchCondition.number':0
+    })
     that.getActivityList();
     if (!options.userId&&!options.ownerId) {
       template.tabbar("tabBar", 0, this);
@@ -77,6 +94,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    console.log(this.data.searchCondition)
+
     if (this.data.needUpdate) {
       this.getActivityList();
       this.data.needUpdate = false;

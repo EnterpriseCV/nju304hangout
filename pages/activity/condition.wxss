@@ -1,0 +1,16 @@
+/* pages/activity/condition.wxss */
+.inputlabel{
+  float:left;
+  width:200rpx;
+  margin: 20rpx;
+}
+
+.inputcontent{
+  margin: 20rpx;
+  float:left;
+}
+
+.inputline{
+  border-bottom: rgb(247, 247, 247) solid 1rpx;
+  overflow: hidden;
+}

@@ -11,6 +11,12 @@
     </view>
   </view>
 <scroll-view scroll-y='true' class='{{fullPage?"":"mainpage"}}'>
+<view style='overflow:hidden'>
+  <view class="searchitem {{searchCondition.sortType=='default'?'chosen':''}}" data-type='default' bindtap='setSortType'>综合</view>
+  <view class="searchitem {{searchCondition.sortType=='time'?'chosen':''}}" data-type='time' bindtap='setSortType'>时间</view>
+  <view class="searchitem {{searchCondition.sortType=='number'?'chosen':''}}" data-type='number' bindtap='setSortType'>人数</view>
+  <view class="searchitem " bindtap='setCondition'>筛选</view>
+</view>
   <view class='activitylist'>
     <view wx:for="{{activitylist}}" wx:key="id" class='activityitem' bindtap="checkActivity" data-actid='{{item.id}}'>
       <view class='activityname'>{{item.name}}</view>

@@ -1,0 +1,23 @@
+<!--pages/activity/condition.wxml-->
+<view class="container">
+  <form bindsubmit='saveCondition'>
+    <view class='contentline'>
+      <view class='inputline'>
+        <view class='inputlabel'>活动地点</view>
+        <view class='inputcontent'>
+          <input name='place' value='{{place}}'></input>
+        </view>
+      </view>
+      <view class='inputline'>
+        <view class='inputlabel'>最大人数</view>
+        <view class='inputcontent'>
+          <input name='number' value='{{number}}'></input>
+        </view>
+      </view>
+    </view>
+
+    <view style='margin-bottom:20rpx;'>
+      <button style='margin:20rpx;' form-type='submit'>完成</button>
+    </view>
+  </form>
+</view>

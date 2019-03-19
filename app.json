@@ -11,6 +11,7 @@
     "pages/message/applyInfo",
     "pages/personal/index",
     "pages/comment/comments",
-    "pages/user/label"
+    "pages/user/label",
+    "pages/activity/condition"
   ]
 }

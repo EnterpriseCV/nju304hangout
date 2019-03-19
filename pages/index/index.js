@@ -16,7 +16,6 @@ Page({
     that.registerOrUpdateUserInfo();
     setInterval(function () {
       that.registerOrUpdateUserInfo();
-      console.log(getApp().globalData.session_id);
     }, 1000 * 60 * 20);
   },
 
@@ -50,7 +49,6 @@ Page({
                 jscode: code
               },
               success: function (res) {
-                console.log(res);
                 getApp().globalData.userInfo.openid = res.data.openid;
                 getApp().globalData.session_id = res.data.session_id;
                 that.gotoactlist();
