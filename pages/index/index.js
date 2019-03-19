@@ -5,53 +5,62 @@ Page({
    * 页面的初始数据
    */
   data: {
-    canIUse:wx.canIUse("getUserInfo"),
-    userInfo:"",
-    hasUserInfo:true
+    canIUse: wx.canIUse("getUserInfo"),
+    userInfo: "",
+    hasUserInfo: true
   },
 
-  getUserInfo:function(){
+  getUserInfo: function () {
     var that = this;
-    this.setData({hasUserInfo:true});
+    this.setData({ hasUserInfo: true });
     that.registerOrUpdateUserInfo();
     setInterval(function () {
       that.registerOrUpdateUserInfo();
       console.log(getApp().globalData.session_id);
-    }, 1000*60*20);
-    this.gotoactlist();
+    }, 1000 * 60 * 20);
   },
 
-  gotoactlist:function(){
+  gotoactlist: function () {
     wx.redirectTo({
       url: '/pages/activity/list'
     })
   },
 
-  registerOrUpdateUserInfo:function(){
-    var userInfo = getApp().globalData.userInfo;
-
-    wx.login({
-      success:function(res){
-        var code = res.code;
-        wx.request({
-          url: 'https://nju304.xyz/user/login',
-          method:"post",
-          data:{
-            nickName:userInfo.nickName,
-            gender: userInfo.gender,
-            avatarUrl: userInfo.avatarUrl,
-            city: userInfo.city,
-            province: userInfo.province,
-            jscode:code
-          },
-          success:function(res){
-            console.log(res);
-            getApp().globalData.userInfo.openid = res.data.openid;
-            getApp().globalData.session_id = res.data.session_id;
+  registerOrUpdateUserInfo: function () {
+    var that = this
+    wx.getUserInfo({
+      success: function (res) {
+        getApp().globalData.userInfo = res.userInfo;
+        that.setData({ userInfo: getApp().globalData.userInfo });
+        if (getApp().userInfoReadyCallback) {
+          getApp().userInfoReadyCallback(res);
+        }
+        wx.login({
+          success: function (res) {
+            var code = res.code;
+            wx.request({
+              url: 'https://nju304.xyz/user/login',
+              method: "post",
+              data: {
+                nickName: getApp().globalData.userInfo.nickName,
+                gender: getApp().globalData.userInfo.gender,
+                avatarUrl: getApp().globalData.userInfo.avatarUrl,
+                city: getApp().globalData.userInfo.city,
+                province: getApp().globalData.userInfo.province,
+                jscode: code
+              },
+              success: function (res) {
+                console.log(res);
+                getApp().globalData.userInfo.openid = res.data.openid;
+                getApp().globalData.session_id = res.data.session_id;
+                that.gotoactlist();
+              }
+            })
           }
         })
+
       }
-    });
+    })
 
   },
 
@@ -61,23 +70,23 @@ Page({
   onLoad: function (options) {
     var thispage = this;
     wx.getSetting({
-      success:function(res){
-        if(res.authSetting['scope.userInfo']){
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
-            success:function(res){
+            success: function (res) {
               getApp().globalData.userInfo = res.userInfo;
               thispage.setData({ userInfo: getApp().globalData.userInfo });
-              if(getApp().userInfoReadyCallback){
+              if (getApp().userInfoReadyCallback) {
                 getApp().userInfoReadyCallback(res);
               }
               thispage.getUserInfo();
             }
           })
         }
-        else{
-          thispage.setData({hasUserInfo:false})
+        else {
+          thispage.setData({ hasUserInfo: false })
           wx.hideTabBar({
-            
+
           })
         }
       }
