@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cells weui-cells_after-title" wx:for="{{labelArray}}" wx:key="id" data-item="item" data-applyId='{{item.id}}'>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">{{item.label}}</view>
+          <view class="weui-cell__ft">{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <button type="weui-btn" bindtap="showInput">添加标签</button>
+  </view>
+
+  <modal hidden="{{hiddenmodalnput}}" title="请输入标签" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="addLabel">
+    <input type='text' placeholder="请输入内容" bindinput='updateLabel' auto-focus/>
+  </modal>
+</view>

@@ -24,9 +24,9 @@
         <view class="weui-cell__ft">{{activity.endTime}}</view>
       </view>
       <navigator url="../user/index?userId={{userId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">申请人</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+        <view class="weui-cell__bd">申请人</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
       <view class="weui-cell">
         <view class="weui-cell__bd">申请状态</view>
         <view class="weui-cell__ft">{{status}}</view>

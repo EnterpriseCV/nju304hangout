@@ -113,10 +113,10 @@
       <view class='buttonArea'>
         <button wx:if='{{opentype=="create"}}' form-type='submit'>申请创建</button>
         <button wx:if='{{opentype!="create"&&isOwner}}' form-type='submit'>更新信息</button>
-        <button wx:if='{{opentype!="create"&&isOwner}}' bindtap='deleteact' type='warn'>删除活动</button>
         <button wx:if='{{notEditable&&!inthisact}}' bindtap='applyForActivity'>申请加入</button>
-        <button wx:if='{{opentype!="create"&&!notEditable}}' bindtap='checkActivityComment'>活动评论</button>
+        <button wx:if='{{opentype!="create"&&inthisact}}' bindtap='checkActivityComment'>活动评论</button>
         <button wx:if='{{inthisact&&!isOwner}}' bindtap='exitActivity'>退出活动</button>
+        <button wx:if='{{opentype!="create"&&isOwner}}' bindtap='deleteact' type='warn'>删除活动</button>
       </view>
     </form>
   </view>

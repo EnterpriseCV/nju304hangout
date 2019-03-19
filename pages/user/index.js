@@ -60,9 +60,15 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    this.setData({
-      userId: options.userId
-    });
+    if (options.userId == null){
+      this.setData({
+        userId: getApp().globalData.userInfo.openid
+      });
+    } else {
+      this.setData({
+        userId: options.userId
+      });
+    }
     console.log(this.data.actId)
     this.loadUser();
   },

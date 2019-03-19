@@ -10,6 +10,7 @@
     "pages/user/index",
     "pages/message/applyInfo",
     "pages/personal/index",
-    "pages/comment/comments"
+    "pages/comment/comments",
+    "pages/user/label"
   ]
 }

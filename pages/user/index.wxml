@@ -36,10 +36,10 @@
         </view>
         <view class="weui-cell__ft">{{user.treadNum}}</view>
       </view>
-      <view class="weui-cell">
+      <navigator url="../user/label?labels={{user.labels}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__bd">标签</view>
-        <view class="weui-cell__ft">{{user.labels}}</view>
-      </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
     </view>
   </view>
   <view class="page__bd page__bd_spacing">
