@@ -58,7 +58,7 @@ Page({
       header: {},
       formData: {},
       success: function(res) {
-        var data =res.data;
+        var data ='https://nju304.xyz/image/'+res.data;
         console.log(data)
         that.setData({
           img:data
@@ -78,7 +78,8 @@ Page({
         userId: getApp().globalData.userInfo.openid,
         actId: this.data.actId,
         score: event.detail.value.slider,
-        description: event.detail.value.textarea
+        description: event.detail.value.textarea,
+        img:this.data.img
       },
       header: {
         'content-type': 'application/json'
