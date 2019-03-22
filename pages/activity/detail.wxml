@@ -100,6 +100,13 @@
         </view>
       </view>
 
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell" bindtap="showInput" wx:if='{{opentype=="create"||isOwner}}'>
+          <view class="weui-cell__bd">活动密码</view>
+          <view class='weui-cell__ft'>{{setPwd}}</view>
+        </view>
+      </view>
+
       <view wx:if='{{opentype!="create"}}' class='description'>
         <label>活动成员:</label>
         <br />
@@ -119,5 +126,12 @@
         <button wx:if='{{opentype!="create"&&isOwner}}' bindtap='deleteact' type='warn'>删除活动</button>
       </view>
     </form>
+
+    <modal hidden="{{hiddenmodalnput}}" title="设置活动密码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="addPwd">
+      <input type='text' placeholder="请输入内容" bindinput='updatePwd' auto-focus/>
+    </modal>
+    <modal hidden="{{pwdApplyInput}}" title="输入活动密码" confirm-text="提交" cancel-text="重置" bindcancel="cancelApply" bindconfirm="pwdApply">
+      <input type='text' placeholder="请输入内容" bindinput='updatePwd' auto-focus/>
+    </modal>
   </view>
 </view>

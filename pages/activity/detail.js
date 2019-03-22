@@ -12,8 +12,91 @@ Page({
     isOwner: false,
     opentype: "",
     curDate: '',
-    maxDate: ''
+    maxDate: '',
+    actPwd: "",
+    setPwd: "OFF",
+    hiddenmodalnput: true,
+    pwdApplyInput: true
   },
+
+
+  cancel: function() {
+    this.setData({
+      actPwd: "",
+      hiddenmodalnput: true,
+      setPwd: "OFF"
+    });
+  },
+
+  showInput: function() {
+    this.setData({
+      hiddenmodalnput: false
+    });
+  },
+
+  updatePwd: function(event) {
+    this.setData({
+      actPwd: event.detail.value
+    })
+  },
+
+  addPwd: function() {
+    var that = this;
+    if (this.data.actPwd != "") {
+      this.setData({
+        hiddenmodalnput: true,
+        setPwd: "ON"
+      });
+      wx.showToast({
+        title: '成功设置密码',
+        icon: 'succes',
+        duration: 1000,
+        mask: true,
+        success: function() {}
+      });
+    } else {
+      this.setData({
+        hiddenmodalnput: true,
+        setPwd: "OFF"
+      });
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'succes',
+        duration: 1000,
+        mask: true,
+        success: function() {}
+      });
+    }
+  },
+
+  cancelApply: function() {
+    this.setData({
+      actPwd: "",
+      pwdApplyInput: true
+    });
+  },
+
+  pwdApply: function() {
+    var that = this;
+    if (this.data.actPwd != "") {
+      this.setData({
+        pwdApplyInput: true
+      });
+      this.applyOrPwdForActivity();
+    } else {
+      this.setData({
+        pwdApplyInput: true
+      });
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'succes',
+        duration: 1000,
+        mask: true,
+        success: function() {}
+      });
+    }
+  },
+
 
   checkActivityComment: function() {
     var that = this;
@@ -88,7 +171,19 @@ Page({
       url: '/pages/user/index?userId=' + event.currentTarget.dataset.userid,
     })
   },
-  applyForActivity: function(e) {
+
+  applyForActivity: function () {
+    console.log(this.data.actinfo.pwd)
+    if (this.data.actinfo.pwd != null && this.data.actinfo.pwd != "") {
+      this.setData({
+        pwdApplyInput: false
+      });
+      return;
+    }
+    this.applyOrPwdForActivity();
+  },
+
+  applyOrPwdForActivity: function() {
     var that = this;
     wx.request({
       url: 'https://nju304.xyz/activities/' + that.data.actinfo.id + '/applications',
@@ -98,9 +193,10 @@ Page({
         actName: that.data.actinfo.name,
         nickName: getApp().globalData.userInfo.nickName,
         userId: getApp().globalData.userInfo.openid,
+        pwd: this.data.actPwd
       },
       success: function(res) {
-        if (res.data == 'Created') {
+        if (res.data == 'Created' || res.data == 'OK') {
           wx.showToast({
             title: '成功',
             icon: 'succes',
@@ -121,6 +217,9 @@ Page({
   formSubmit: function(e) {
     e.detail.value.ownerId = getApp().globalData.userInfo.openid;
     e.detail.value.id = this.data.actinfo.id;
+    if (this.data.actPwd != "") {
+      e.detail.value.pwd = this.data.actPwd;
+    }
     wx.request({
       url: 'https://nju304.xyz/activities/',
       method: 'post',
@@ -219,6 +318,11 @@ Page({
           }
         }
       });
+      if (this.data.actinfo.pwd != null && this.data.actinfo.pwd != "") {
+        that.setData({
+          setPwd: "ON"
+        });
+      }
       wx.request({
         url: 'https://nju304.xyz/activities/' + options.actId + "/users",
         success: function(res) {

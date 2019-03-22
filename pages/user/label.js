@@ -8,10 +8,11 @@ Page({
     user: "",
     labelArray: [],
     label: "",
+    userId: "",
     hiddenmodalnput: true
   },
 
-  loadLabels: function(labels) {
+  loadLabels: function (labels) {
     var labelArray = [];
     if (labels.length == 0) {
       return
@@ -31,13 +32,13 @@ Page({
     });
   },
 
-  cancel: function() {
+  cancel: function () {
     this.setData({
       hiddenmodalnput: true
     });
   },
 
-  showInput: function() {
+  showInput: function () {
     this.setData({
       hiddenmodalnput: false
     });
@@ -49,83 +50,91 @@ Page({
     })
   },
 
-  addLabel: function() {
+  addLabel: function () {
     console.log(this.data.label);
-    
-    this.onLoad({});
+    var that = this;
+    wx.request({
+      method: 'POST',
+      url: 'https://nju304.xyz/user/' + this.data.userId + '/label/' + this.data.label,
+      success: function (res) {
+
+      },
+      fail: function (res) {
+
+      }
+    });
     this.setData({
-      hiddenmodalnput: false
+      hiddenmodalnput: true
+    });
+    wx.request({
+      url: 'https://nju304.xyz/user/' + getApp().globalData.userInfo.openid,
+      success: function (res) {
+        var labels = res.data.labels
+        that.loadLabels(labels);
+      },
+      fail: function (res) {
+
+      }
     });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var labels = ";";
-    if (options.labels == null) {
-      var that = this;
-      wx.request({
-        url: 'https://nju304.xyz/user/' + getApp().globalData.userInfo.openid,
-        success: function(res) {
-          var labels = res.data.labels
-          that.loadLabels(labels);
-        },
-        fail: function(res) {
-
-        }
-      });
-    } else {
-      this.loadLabels(options.labels);
-    }
+    this.setData({
+      userId: options.userId
+    });
+    this.loadLabels(options.labels);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
