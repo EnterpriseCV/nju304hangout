@@ -9,7 +9,8 @@ Page({
     comments: {},
     showAdd: true,
     isShow: "+",
-    sliderColor: "red"
+    sliderColor: "red",
+    img:""
   },
 
   sliderchange: function (event) {
@@ -33,8 +34,42 @@ Page({
       isShow: show
     });
   },
+  uploadPhoto: function(){
+    var that =this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths;
 
+        console.log('本地图片的路径:', tempFilePaths)
+        that.upload(that, tempFilePaths)
+      }
+      
+    })
+  },
+  upload: function(page,path){
+    var that=this;
+    wx.uploadFile({
+      url: 'https://nju304.xyz/comment/org/uploadImg',
+      filePath: path[0],
+      name: 'image',
+      header: {},
+      formData: {},
+      success: function(res) {
+        var data =res.data;
+        console.log(data)
+        that.setData({
+          img:data
+        });
+      },
+
+    })
+    
+  },
   addComment: function (event) {
+    console.log(this.data.img)
     var that = this;
     wx.request({
       url: 'https://nju304.xyz/comment/org/' + this.data.actId,

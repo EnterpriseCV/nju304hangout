@@ -10,11 +10,12 @@
       </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
+      <view  class="weui-cell">
         <view class="weui-cell__bd">
           <input class="weui-input" placeholder="请输入评语" name="textarea" />
-        </view>
+        </view>       
       </view>
+      <button bindtap='uploadPhoto'>拍照选取照片上传</button>
     </view>
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" form-type="submit">提交评论</button>
