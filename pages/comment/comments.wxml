@@ -36,6 +36,8 @@
         <view class="weui-cell__bd">
           <view>{{item.nickName}}</view>
           <view style="font-size: 13px;color: #888888;">{{item.description}}</view>
+          <image src='{{item.img}}' wx:if='{{item.img!=null}}'style="width:200px;height:200px"></image>
+          
         </view>
       </view>
     </view>
