@@ -22,9 +22,6 @@
             </navigator>
           </view>
         </view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          2.0版本开启邀请，敬请期待
-        </view>
 
       </view>
     </view>
