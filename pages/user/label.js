@@ -67,7 +67,7 @@ Page({
       hiddenmodalnput: true
     });
     wx.request({
-      url: 'https://nju304.xyz/user/' + getApp().globalData.userInfo.openid,
+      url: 'https://nju304.xyz/user/' + this.data.userId,
       success: function (res) {
         var labels = res.data.labels
         that.loadLabels(labels);
