@@ -50,8 +50,14 @@ Page({
     })
   },
 
+  sleep: function (delay) {
+    var start = (new Date()).getTime();
+    while ((new Date()).getTime() - start < delay) {
+      continue;
+    }
+  },
+
   addLabel: function () {
-    console.log(this.data.label);
     var that = this;
     wx.request({
       method: 'POST',
@@ -66,6 +72,7 @@ Page({
     this.setData({
       hiddenmodalnput: true
     });
+    this.sleep(1000);
     wx.request({
       url: 'https://nju304.xyz/user/' + this.data.userId,
       success: function (res) {
